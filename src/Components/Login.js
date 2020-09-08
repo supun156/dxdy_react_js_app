@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('eve.holt@reqres.in');
+  const [password, setPassword] = useState('cityslicka');
   const [usernameError, setUsernameError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+
+  const history = useHistory();
 
   const updateInput = (e, callback) => {
 
@@ -39,8 +42,10 @@ function Login() {
       .then((res) => res.json())
 
       .then((result) => {
-          console.log(result);
-        })
+        if (result.token !== "") {
+          history.push("profile");
+        };
+      })
     }
   };
 
@@ -50,6 +55,7 @@ function Login() {
         onChange={(e) => {
           updateInput(e, setUsername, 'username')
         }}
+        value = {username}
       />
       {usernameError}
       <br/>
@@ -58,6 +64,7 @@ function Login() {
         onChange={(e) => {
           updateInput(e, setPassword, 'password')
         }}
+        value = {password}
       />
       {passwordError}
       <br/>

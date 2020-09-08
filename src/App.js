@@ -1,9 +1,11 @@
-import React from 'react';
-import Login from './Components/Login'
+import React, { Fragment } from 'react';
+import CreateRoutes from './Router/Router';
 
 function App() {
   return (
-    <Login />
+    <Fragment>
+      <CreateRoutes />
+    </Fragment>
   );
 }
 
