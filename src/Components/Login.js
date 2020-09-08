@@ -19,11 +19,11 @@ function Login() {
 
     //to API
 
-    if (username == '') {
+    if (username === '') {
       setUsernameError("Username can't be empty");
     }
 
-    if (password == '') {
+    if (password === '') {
       setPasswordError("Password can't be empty");
     }
 
